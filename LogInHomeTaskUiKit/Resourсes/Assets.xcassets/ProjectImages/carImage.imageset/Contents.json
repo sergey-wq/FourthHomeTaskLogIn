@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "volvo-s60__744420-460x345.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "volvo-s60__744420-460x345-1.jpg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "volvo-s60__744420-460x345-2.jpg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
