@@ -13,32 +13,41 @@ class WelcomeScreenViewController: UIViewController {
     @IBOutlet private weak var welcomeUserLabel: UILabel!
 
     // MARK: - Public Properties
-    var name = ""
+    var user = ""
 
-    // MARK: - Live Cycle Method
+    // MARK: - Private Properties
+    private let primaryColor = UIColor(
+        red: 220/255,
+        green: 159/255,
+        blue: 128/255,
+        alpha: 1
+    )
+
+    private let secondaryColor = UIColor(
+        red: 97/255,
+        green: 118/255,
+        blue: 230/255,
+        alpha: 1
+    )
+
+    // MARK: - Life Cycles Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        setGradientBackground()
-        welcomeUserLabel.text = "Welcome, \(name)!"
+        view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
+        welcomeUserLabel.text = "Welcome, \(user)!"
     }
+}
 
-    // MARK: - IB Actions
-    @IBAction func backButtonAction() {
-        NotificationCenter.default.post(name: GlobalStrings.comeBackToStartScreen, object: nil)
-        dismiss(animated: true) 
-    }
-
-    // MARK: - Private Methods
-    private func setGradientBackground() {
-        let colorTop =  UIColor.blue.cgColor
-        let colorBottom = UIColor.green.cgColor
-
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [colorTop, colorBottom]
-        gradientLayer.locations = [0.0, 1.0]
-        gradientLayer.frame = self.view.bounds
-
-        self.view.layer.insertSublayer(gradientLayer, at:0)
+// MARK: - Set background color
+extension UIView {
+    func addVerticalGradientLayer(topColor: UIColor, bottomColor: UIColor) {
+        let gradient = CAGradientLayer()
+        gradient.frame = bounds
+        gradient.colors = [topColor.cgColor, bottomColor.cgColor]
+        gradient.locations = [0.0, 1.0]
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 0, y: 1)
+        layer.insertSublayer(gradient, at: 0)
     }
 }
 
